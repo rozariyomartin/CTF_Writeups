@@ -4,8 +4,8 @@
 We were given a raw signal capture from an HDMI display adapter: [signal.bin](file:///home/martin/Downloads/ctf/2026/oxFun/Hardware/DigitalTransition/signal.bin).
 The hint mentioned it contained a single digitized frame from a 640x480 HDMI output.
 
-## Analysis
-First, we analyzed the file size:
+## Step-1 Analysis
+First, I analyzed the file size:
 ```bash
 ls -l signal.bin
 # 1680216 bytes
@@ -15,10 +15,10 @@ Calculated size: `800 * 525 * 4 bytes/pixel (RGBA) = 1,680,000 bytes`.
 The file size (1,680,216) is slightly larger than the raw data, suggesting a small header or footer.
 `1680216 - 1680000 = 216 bytes`.
 
-Using `xxd`, we saw a header and some metadata. The raw pixel data likely starts after this header.
+Using `xxd`, I saw a header and some metadata. The raw pixel data likely starts after this header.
 
-## Solution
-We wrote a Python script to extract the raw pixel data and save it as an image. We assumed a standard 32-bit RGBA format.
+## Step-2
+I wrote a Python script to extract the raw pixel data and save it as an image. I assumed a standard 32-bit RGBA format.
 
 ### solve.py
 ```python
@@ -51,10 +51,18 @@ if __name__ == "__main__":
     solve()
 ```
 
-## Result
+## Step-3 Image Analysis
 Running the script generated `frame.png`.
 Opening this image in a steganalysis tool like **StegSolve** (or simply viewing the color planes) reveals the hidden flag clearly in the noisy active area.
 
-![Visual Flag](/home/martin/.gemini/antigravity/brain/88422b62-a12b-4e72-a086-a0ed3e0d8336/frame.png)
+<img width="800" height="525" alt="frame" src="https://github.com/user-attachments/assets/3d8b269f-7870-4d56-8628-261673cb11f8" />
 
-*(Note: In StegSolve, navigating through the color planes or using specific filters makes the flag text legible against the background noise.)*
+Then I used stegsolve to find the flag.
+
+<img width="807" height="587" alt="image" src="https://github.com/user-attachments/assets/189abb71-750b-4304-9bc3-3bf63c7f7891" />
+
+I found the flag in the alpha plane 4.
+
+## Flag
+
+`0xfun{TMDS_D3C0DED_LIKE_A_PR0}`
