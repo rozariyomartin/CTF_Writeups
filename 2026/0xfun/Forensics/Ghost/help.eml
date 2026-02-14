@@ -1,0 +1,84 @@
+Return-Path: <ghost_7622@protonmail.com>
+Delivered-To: unknown@deadletter.net
+Received: from relay4.onion.ch (tor-exit-47.onion.ch [178.62.243.89])
+	by mx7.deadletter.net with ESMTPS id z9x8y7w6v5u4t3s2r1
+	(version=TLS1_2 cipher=TLS_CHACHA20_POLY1305_SHA256)
+	for <unknown@deadletter.net>; Wed, 13 Nov 2025 03:47:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1731471642;
+	h=from:to:subject:date:message-id:x-originating-ip;
+	bh=Kj9mQ2nR8sT4uV5wX6yZ7aB0cD1eF2gH3iJ4kL5mN6oP7qR8sT9=;
+	b=mN7oP8qR9sT0uV1wX2yZ3aB4cD5eF6gH7iJ8kL9mN0oP1qR2sT3uV4wX5yZ6aB7c
+Message-ID: <20251113034722.ghost762.void@protonmail.com>
+Date: Wed, 13 Nov 2025 03:47:22 +0000
+From: ghost_7622@protonmail.com
+To: unknown@deadletter.net
+Subject: 
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: Thunderbird/91.7.0
+X-Originating-IP: [Tor Exit Node]
+X-Priority: 1
+X-Trace-Key: leetiscrazy
+X-PM-Encrypted: end-to-end
+X-Checksum-MD5: a7f3c9e2b8d4f1a6e9c7b5d2f8a3e1c9
+X-Checksum-SHA256: 7d9f2a4e6b8c1f3a5e7d9b2c4f6a8e0c2d4f6a8b0d2e4f6a8c0e2d4f6a8b0d2
+X-Frame-Offset: 1337
+X-Noise-Level: -47dBm
+X-Signal-Quality: 0.23
+X-Doppler-Shift: +2.7kHz
+X-Timestamp-Drift: -0.003s
+X-Carrier-Frequency: 14.230MHz
+X-Modulation-Index: 0.87
+X-Packet-Trace: sxxia://vtzvd.ezskem.uqd/fhjp/h/1YeKCSnfc9c9w_9xH_KSMCFouaHEQgVeK/midu?fwt=wzaxv_lhlv
+X-Bandwidth: 3kHz
+X-SNR-Ratio: 12.4dB
+X-Phase-Offset: 127°
+X-Sync-Pattern: 0xDEADBEEF
+X-CRC32: 0x7F8E9D0C
+X-Flag: GB4GM5LOPNGTI6LCGNPVSMDVL5BTI3S7IQYF6MJXPUFA
+X-Sequence-Number: 0x0000042A
+X-Protocol-Version: 2.1.7
+X-Cipher-Suite: AES256-GCM-SHA384
+X-Key-Exchange: ECDHE-RSA
+X-Certificate-Hash: f8e7d6c5b4a39281706f5e4d3c2b1a09
+X-Session-Token: jwt.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.corrupted
+X-Entropy-Score: 7.823
+X-Correlation-ID: uuid-4a7b-9c3e-2d1f-8e6b-5a4c-3d2e-1f0a
+X-Trace-Route: [SCRAMBLED]
+X-Geolocation: 51.5074°N, 0.1278°W
+X-Satellite-Pass: NOAA-18
+X-Orbit-Number: 47823
+X-Acquisition-Time: 03:47:22Z
+X-Processing-Delay: 847ms
+X-Buffer-Overflow: FALSE
+X-Parity-Check: EVEN
+X-Hell: Vigenere
+X-Error-Correction: Reed-Solomon
+X-Interleaving-Depth: 4
+X-Scrambler-Seed: 0x1A2B3C4D
+
+I don't have much time. They're already looking for me.
+
+I intercepted something I wasn't supposed to see. Something they buried deep, 
+thinking nobody would know where to look anymore. Old methods. Forgotten frequencies.
+
+I can't say more. They monitor everything now. Every word could be my last.
+
+If you're reading this, you know what to do. Find what they hid. Decode what 
+they thought was safe. The truth is in the static.
+
+Don't try to contact me. This account will be burned after sending.
+
+Trust no one.
+
+=========================================================
+
+TWlkbmlnaHQuIFNhbWUgbmV0d29yaywgZGlmZmVyZW50IG5vZGUuCklmIEkgY2FuIHJlYWNoIHRo
+ZSBzZXJ2ZXIgYmVmb3JlIHRoZXkgd2lwZSB0aGUgdHJhY2VzLAp3ZSBtaWdodCBqdXN0IHJld3Jp
+dGUgdGhlIHN0b3J5Lgo=
+
+=========================================================
+
+- Ghost
