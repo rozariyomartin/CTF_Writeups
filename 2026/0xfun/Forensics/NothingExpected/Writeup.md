@@ -1,4 +1,6 @@
-![[Pasted image 20260213112142.png]]
+# Nothing Expected - Writeup
+
+<img width="514" height="450" alt="image" src="https://github.com/user-attachments/assets/e9a929c1-2ee1-4d21-b257-c206a6a842eb" />
 
 The challenge name **“NothingExpected”** suggests the file may appear normal but hides something in an unexpected place.
 
@@ -6,7 +8,8 @@ The challenge name **“NothingExpected”** suggests the file may appear normal
 
 Check file type:
 
-![[Pasted image 20260213112314.png]]
+<img width="575" height="107" alt="image" src="https://github.com/user-attachments/assets/871cfb3c-df8d-4eb0-8679-14d4c77ef588" />
+
 
 The image opens normally — nothing suspicious visually.
 
@@ -16,7 +19,8 @@ The image opens normally — nothing suspicious visually.
 
 Run `zsteg`, a common PNG stego tool:
 
-![[Pasted image 20260213112347.png]]
+<img width="687" height="365" alt="image" src="https://github.com/user-attachments/assets/894651c5-c794-4965-80ce-e9865a22c138" />
+
 
 Output reveals:
 
@@ -49,7 +53,8 @@ Typical methods were attempted:
 
 `binwalk -eM file.png`
 
-![[Pasted image 20260213112435.png]]
+<img width="813" height="428" alt="image" src="https://github.com/user-attachments/assets/a6d70f7b-8636-418f-8691-b2166709d498" />
+
 
 Only partial zlib data detected — nothing usable extracted.
 
@@ -67,7 +72,8 @@ Extracted fragments were truncated and not valid JSON.
 
 `exiftool file.png`
 
-![[Pasted image 20260213112539.png]]
+<img width="1900" height="945" alt="image" src="https://github.com/user-attachments/assets/9cc48a63-46b0-427e-ab41-7b2d7bd48d83" />
+
 
 
 ---
@@ -94,7 +100,8 @@ Since the data is an embedded Excalidraw scene, the simplest method is:
 
 After loading, the hidden drawing appears.
 
-![[Pasted image 20260213112759.png]]
+<img width="1310" height="399" alt="image" src="https://github.com/user-attachments/assets/6538cd2d-2bf3-4b86-a8ed-6d6326416478" />
+
 
 ---
 
