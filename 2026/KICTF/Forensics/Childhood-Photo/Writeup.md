@@ -1,78 +1,89 @@
 # Childhood Photo
 
-## Challenge
+When I first looked at the challenge, there was only one file:
 
-We were given a single file:
+`gepj.lanif`
 
-- `gepj.lanif`
-
-The filename is suspicious because it is `final.jpeg` reversed.
+The filename immediately felt suspicious. If you reverse it, it becomes `final.jpeg`. That was the first hint that something wasn’t normal.
 
 ---
 
-## Step 1: Identify the file type
+## Initial Inspection
 
-Ran:
+I checked what kind of file it actually was:
 
 ```bash
 file gepj.lanif
 xxd -l 16 gepj.lanif
 ```
 
-Observation:
+Surprisingly:
 
-- `file` reports generic `data`
-- Header starts with `FF D9` (JPEG end marker), not `FF D8` (JPEG start marker)
+* `file` reported it as generic `data`
+* The header started with `FF D9`
 
-<img width="743" height="168" alt="image" src="https://github.com/user-attachments/assets/9a685d9f-b654-4006-805b-3cc5e226bf1f" />
+That’s strange because:
 
+* `FF D8` → JPEG **start** marker
+* `FF D9` → JPEG **end** marker
 
-This strongly suggests the entire file is byte-reversed.
+Seeing an end marker at the beginning strongly suggests the file is **byte-reversed**.
+
+![Header Inspection](https://github.com/user-attachments/assets/9a685d9f-b654-4006-805b-3cc5e226bf1f)
 
 ---
 
-## Step 2: Reverse the bytes to recover the original JPEG
+## Reversing the File
+
+Since the file appeared to be fully reversed, I reversed it byte-by-byte:
 
 ```bash
 perl -0777 -ne 'print scalar reverse $_' gepj.lanif > final.jpeg
 file final.jpeg
 ```
 
-Result:
+Now the file was recognized as a valid JPEG image.
 
-- `final.jpeg` is a valid JPEG image.
+That confirmed the suspicion — the challenge intentionally reversed the entire file to break the signature.
 
 ---
 
-## Step 3: Check for appended/hidden data
+## Looking Deeper
 
-Search for JPEG end markers:
+In CTF challenges, if something works perfectly, it usually means there’s more hidden underneath.
+
+So I searched for multiple JPEG end markers:
 
 ```bash
 grep -oba $'\xff\xd9' final.jpeg
 wc -c final.jpeg
 ```
 
-Observation:
+Normally, a JPEG should have only one `FFD9` marker at the very end.
 
-- There is an earlier `FFD9` before file end, meaning extra bytes are appended after the first image.
-- This indicates a second hidden payload.
+But here, there was an earlier occurrence before the file actually ended.
+
+That means:
+
+* The first JPEG ends earlier
+* Extra data is appended after it
 
 ---
 
-## Step 4: Carve the trailing payload
+## Carving the Hidden Payload
 
-Extract bytes after the first `FFD9`:
+I extracted everything after the first `FFD9` marker:
 
 ```bash
 dd if=final.jpeg of=trailing.bin bs=1 skip=138898 status=none
 file trailing.bin
 ```
 
-Result:
+![Carved File Type](https://github.com/user-attachments/assets/087f910c-6ca9-459a-a0b4-a30f9739eaa7)
 
-<img width="1470" height="144" alt="image" src="https://github.com/user-attachments/assets/087f910c-6ca9-459a-a0b4-a30f9739eaa7" />
+It turned out to be another JPEG.
 
+So I renamed it:
 
 ```bash
 mv trailing.bin childhood.jpg
@@ -80,25 +91,31 @@ mv trailing.bin childhood.jpg
 
 ---
 
-## Step 5: Read the hidden image
+## The Hidden Image
 
-Open `childhood.jpg` and inspect visually.
+Opening `childhood.jpg` revealed the real content of the challenge.
 
-The flag is written on the image:
+![Hidden Image](https://github.com/user-attachments/assets/6347a6db-3b9c-489a-b72f-ca061f0b076b)
 
-<img width="564" height="1010" alt="image" src="https://github.com/user-attachments/assets/6347a6db-3b9c-489a-b72f-ca061f0b076b" />
-
-## Flag
-
-`KJCTF{r3v3r53d_jp3g_h34d3r_fix3d}`
+And there it was — the flag written directly on the image.
 
 ---
 
-## Summary
+# Flag
 
-The challenge used two simple tricks:
+```
+KJCTF{r3v3r53d_jp3g_h34d3r_fix3d}
+```
 
-1. Whole-file byte reversal to break JPEG signature.
-2. Appended second JPEG after the first JPEG end marker.
+---
 
-By reversing the original file and carving trailing bytes, the hidden “childhood photo” and flag were recovered.
+## Final Thoughts
+
+This challenge used two simple but clever tricks:
+
+* The entire file was byte-reversed to break the JPEG signature.
+* A second JPEG image was appended after the first JPEG’s end marker.
+
+No heavy steganography. No encryption. Just understanding file structure and thinking logically.
+
+Sometimes the cleanest tricks are the most satisfying to solve.
