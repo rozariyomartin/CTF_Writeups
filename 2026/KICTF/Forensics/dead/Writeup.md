@@ -3,7 +3,7 @@
 **Category:** Forensics
 **Flag:** `KICTF{t1m1ng_is_3v3ryth1ng_and_dns_n3v3r_li3s}`
 
-> *Our IDS flagged unusual ping activity from an internal workstation to an external IP. We captured the traffic but nothing looks obviously malicious. The analyst swears he sees the machine "talking back" through DNS. Figure out what was stolen.*
+*Our IDS flagged unusual ping activity from an internal workstation to an external IP. We captured the traffic but nothing looks obviously malicious. The analyst swears he sees the machine "talking back" through DNS. Figure out what was stolen.*
 
 ---
 
@@ -11,7 +11,7 @@ When I first read the challenge title — **Dead Frequency** — I knew it wasn�
 
 “Dead” and “Frequency” turned out to be literal clues hiding in plain sight.
 
----
+
 
 ## Opening the Capture
 
@@ -29,7 +29,7 @@ At first glance, it looks like a normal workstation (`192.168.1.105`) browsing G
 
 But the ping volume stood out.
 
----
+
 
 ## The Strange Pings
 
@@ -73,7 +73,7 @@ D34DC2C2D34DC2C2D34DC2C2D34DC2C2
 
 That repetition looked intentional — like a key.
 
----
+
 
 ## XOR — The Hidden Layer
 
@@ -102,7 +102,6 @@ That’s an **ELF header**.
 
 They were exfiltrating a Linux binary over ICMP ping payloads.
 
----
 
 ## Reassembling the Binary
 
@@ -138,7 +137,7 @@ The binary itself was the exfiltration tool — delivered through ICMP, then use
 
 The analyst was right.
 
----
+
 
 ## Following the DNS Trail
 
@@ -162,7 +161,6 @@ This is classic **DNS exfiltration** — encoding stolen data inside subdomain l
 
 Since DNS is rarely blocked, it’s the perfect covert channel.
 
----
 
 ## Decoding the Data
 
@@ -194,23 +192,5 @@ KICTF{t1m1ng_is_3v3ryth1ng_and_dns_n3v3r_li3s}
 
 ![Flag Output](https://github.com/user-attachments/assets/cebeda6f-c82d-4f8c-bedc-c16b1c72731d)
 
----
 
-## What This Challenge Really Showed
 
-This wasn’t just about packet inspection.
-
-It demonstrated:
-
-* ICMP as a covert file transfer channel
-* XOR-based obfuscation
-* DNS-based data exfiltration
-* Custom Base32 encoding
-* Multi-stage malware delivery
-
-The title said it all.
-
-**Dead** → `DE AD`
-**Frequency** → ICMP pings
-
-And in the end, timing and DNS never lie.
