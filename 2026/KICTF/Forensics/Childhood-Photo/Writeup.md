@@ -44,6 +44,11 @@ file final.jpeg
 
 Now the file was recognized as a valid JPEG image.
 
+This is the image
+
+<img width="576" height="1015" alt="image" src="https://github.com/user-attachments/assets/1ccade42-c8d8-4b28-8380-4443d7c523ed" />
+
+
 That confirmed the suspicion — the challenge intentionally reversed the entire file to break the signature.
 
 ---
