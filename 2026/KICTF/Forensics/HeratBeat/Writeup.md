@@ -1,8 +1,9 @@
 # Heart Beat - Forensics CTF Writeup
 
 ## Challenge Description
-> *An anonymous source leaked this strange animation. It plays. It loops. It looks normal.*
-> *The first thing you see is never the last thing you find. Every frame has a heartbeat, measured in 1/100th of a second. 100 heartbeats in total — but only certain numbers have always stood apart from the rest in mathematics. What do those special moments whisper when you listen closely?*
+*An anonymous source leaked this strange animation. It plays. It loops. It looks normal.*
+
+*The first thing you see is never the last thing you find. Every frame has a heartbeat, measured in 1/100th of a second. 100 heartbeats in total — but only certain numbers have always stood apart from the rest in mathematics. What do those special moments whisper when you listen closely?*
 
 ## 🔍 Initial Thoughts & Clues
 When I first read the description, a few things immediately stood out like puzzle pieces waiting to be put together:
